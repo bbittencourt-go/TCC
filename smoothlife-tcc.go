@@ -1,6 +1,6 @@
 /* SMOOTHLIFE (STEPHAN RAFLER)
 criado em       : 2024/11/20
-ult. atualização: 2024/12/09
+ult. atualização: 2024/12/28
 autor           : Beatriz Bittencourt <beatrizdecbittencourt@gmail.com>
 notas           : Executa o SmoothLife (parâmetros originais) em arquivos .dat
 compilação      : -
@@ -25,10 +25,10 @@ const (
 
 // variáveis como x e y da célula, número do arquivo .dat, número da célula e contagens de células, gerações e arquivos
 var (
-	i, j, x_q, y_q, num, t, l, n int
-	phi                          [Nx * Ny]float64 // float64 para assumir estados decimais
-	updt                         [Nx * Ny]float64 // idem
-	dat                          [2]int
+	i, j, x_q, y_q, num, t, n int
+	phi [Nx * Ny]float64 // float64 para assumir estados decimais
+	updt [Nx * Ny]float64 // idem
+	dat [2]int
 )
 
 // função condição inicial, distribui aleatoriamente quadrados com células entre 0 e 1
@@ -46,9 +46,9 @@ func ic() {
 
 // função op, imprime a rede ao final de cada geração
 func op(num int, phi [Nx * Ny]float64) {
-	f := fmt.Sprintf("smoothlife-tcc-%v.dat", num) // arquivo smoothlife-(x).dat (a depender do número da geração)
-	file, _ := os.Create(f)                    // cria o arquivo
-	for i = 0; i < Nx; i++ {                   // para toda a rede
+	f := fmt.Sprintf("smoothlife-tcc-%v.dat", num) // arquivo smoothlife-tcc-(x).dat (a depender do número da geração)
+	file, _ := os.Create(f) // cria o arquivo
+	for i = 0; i < Nx; i++ { // para toda a rede
 		for j = 0; j < Ny; j++ {
 			fmt.Fprintf(file, "%f%f ", phi[j*Nx+i], phi[j*Nx+i]) // imprime o valor de cada célula em ordem, duas vezes
 		}
@@ -92,7 +92,7 @@ func s(n, m float64) float64 {
 // função principal - a simulação ocorre essencialmente aqui
 func main() {
 	rand.Seed(time.Now().UnixNano())
-	ic()       // ativa a condição inicial
+	ic() // ativa a condição inicial
 	op(0, phi) // ativa op para imprimir a condição inicial
 
 	for i := 0; i < Nx*Ny; i++ { // calcula a densidade populacional de cada estado
@@ -102,9 +102,9 @@ func main() {
 			dat[0]++
 		}
 	}
-	f, _ := os.Create("datsmoothlife-tcc.dat")                                           // cria o arquivo .dat de densidade populacional
+	f, _ := os.Create("datsmoothlife-tcc.dat") // cria o arquivo .dat de densidade populacional
 	fmt.Fprintf(f, "%.2f   %.2f\n", float64(dat[1])/(Nx*Ny), float64(dat[0])/(Nx*Ny)) // imprime as densidades em %
-	dat[1] = 0                                                                        // zera as densidades para serem atualizadas a cada geração
+	dat[1] = 0 // zera as densidades para serem atualizadas a cada geração
 	dat[0] = 0
 
 	for t = 1; t <= NG; t++ { // para cada geração
@@ -113,7 +113,7 @@ func main() {
 				m, M := float64(0), float64(0) // m, M, n e N começam em 0,0
 				n, N := float64(0), float64(0)
 
-				for dy := -(ra - 1); dy <= (ra - 1); dy++ { // calcula preenchimentos da vizinhança
+				for dy := -(ra - 1); dy <= (ra - 1); dy++ { // calcula preenchimentos da vizinhança com condições de contorno
 					for dx := -(ra - 1); dx <= (ra - 1); dx++ {
 						x := (int(float64(i) + dx + Nx)) % Nx
 						y := (int(float64(j) + dy + Ny)) % Ny
@@ -128,15 +128,15 @@ func main() {
 				}
 				m /= M
 				n /= N
-				q := s(n, m)           // agora que tem n e m, calcula a função de transição
-				updt[j*Nx+i] = 2*q - 1 // atualização da rede (relação SmoothLife discreto-SmoothLifeL)
+				q := s(n, m) // agora que tem n e m, calcula a função de transição
+				updt[j*Nx+i] = 2*q - 1 // atualização da rede
 			}
 		}
 		for i = 0; i < Nx; i++ { // para toda a rede
 			for j = 0; j < Ny; j++ {
 				phi[j*Nx+i] += dt * updt[j*Nx+i] // troca a rede inicial para a atualizada
-				clamp(&phi[j*Nx+i], 0, 1)        // restringe os valores
-				if phi[j*Nx+i] > 0.5 {           // atualiza a densidade populacional
+				clamp(&phi[j*Nx+i], 0, 1) // restringe os valores
+				if phi[j*Nx+i] > 0.5 { // atualiza a densidade populacional
 					dat[1]++
 				} else {
 					dat[0]++
@@ -144,9 +144,9 @@ func main() {
 			}
 		}
 		fmt.Fprintf(f, "%.2f   %.2f\n", float64(dat[1])/(Nx*Ny), float64(dat[0])/(Nx*Ny)) // imprime a densidade populacional atualizada em %                                                                              // aumenta a cada geração
-		op(t, phi)                                                                        // cria o arquivo .dat a cada geração (smoothlife-1, smoothlife-2...)
-		fmt.Printf("%d/%d\n", t, NG)                                                      // mostra gerações completas em tempo real no terminal
-		dat[1] = 0                                                                        // zera as densidades populacionais novamente
+		op(t, phi) // cria o arquivo .dat a cada geração (smoothlife-1, smoothlife-2...)
+		fmt.Printf("%d/%d\n", t, NG) // mostra gerações completas em tempo real no terminal
+		dat[1] = 0 // zera as densidades populacionais novamente
 		dat[0] = 0
 	}
 }
