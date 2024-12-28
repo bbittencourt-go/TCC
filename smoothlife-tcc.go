@@ -103,6 +103,7 @@ func main() {
 		}
 	}
 	f, _ := os.Create("datsmoothlife-tcc.dat") // cria o arquivo .dat de densidade populacional
+	defer f.Close()
 	fmt.Fprintf(f, "%.2f   %.2f\n", float64(dat[1])/(Nx*Ny), float64(dat[0])/(Nx*Ny)) // imprime as densidades em %
 	dat[1] = 0 // zera as densidades para serem atualizadas a cada geração
 	dat[0] = 0
@@ -144,7 +145,7 @@ func main() {
 			}
 		}
 		fmt.Fprintf(f, "%.2f   %.2f\n", float64(dat[1])/(Nx*Ny), float64(dat[0])/(Nx*Ny)) // imprime a densidade populacional atualizada em %                                                                              // aumenta a cada geração
-		op(t, phi) // cria o arquivo .dat a cada geração (smoothlife-1, smoothlife-2...)
+		op(t, phi) // cria o arquivo .dat a cada geração (smoothlife-tcc-1, smoothlife-tcc-2...)
 		fmt.Printf("%d/%d\n", t, NG) // mostra gerações completas em tempo real no terminal
 		dat[1] = 0 // zera as densidades populacionais novamente
 		dat[0] = 0
