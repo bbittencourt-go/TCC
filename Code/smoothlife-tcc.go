@@ -57,16 +57,6 @@ func op(num int, phi [Nx * Ny]float64) {
 	defer file.Close()
 }
 
-// função clamp, restringe valores a entre 0 e 1
-func clamp(x *float64, l, h float64) { // l = 0, h = 1 posteriormente
-	if *x < l { // se o estado for menor que 0, que seja igual a 0
-		*x = l
-	}
-	if *x > h { // se o estado for maior que 1, que seja igual a 1
-		*x = h
-	}
-}
-
 // equações do SmoothLife abaixo; todas são encontradas no artigo original (Stephan Rafler)
 
 // função sigma
@@ -135,8 +125,7 @@ func main() {
 		}
 		for i = 0; i < Nx; i++ { // para toda a rede
 			for j = 0; j < Ny; j++ {
-				phi[j*Nx+i] += dt * updt[j*Nx+i] // troca a rede inicial para a atualizada
-				clamp(&phi[j*Nx+i], 0, 1) // restringe os valores
+				phi[j*Nx+i] += math.Min(math.Max(dt * updt[j*Nx+i], 0), 1) // troca a rede inicial para a atualizada
 				if phi[j*Nx+i] > 0.5 { // atualiza a densidade populacional
 					dat[1]++
 				} else {
