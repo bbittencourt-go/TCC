@@ -82,7 +82,7 @@ func convolucao(entrada1 [Nx][Ny]float64, entrada2 [][]float64, Nx, Ny int) [][]
 	return saida //função convolução retorna o resultado
 }
 
-// equações do Lenia abaixo; todas são encontradas no artigo original (Bert Wang-Chak Chan)
+// equações do Lenia abaixo; todas são encontradas no artigo original (Bert Wang-Chak Chan, 2019)
 
 // função Kernel, cria a vizinhança para toda célula
 func Kernel(Nx, Ny int, R float64) [][]float64 {
