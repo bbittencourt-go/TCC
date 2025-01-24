@@ -162,7 +162,7 @@ func main() {
 
 		for i := 0; i < Nx; i++ { // para toda a rede
 			for j := 0; j < Ny; j++ {
-				phi[i][j] = math.Min(math.Max(phi[i][j]+(1/T)*G[i][j], 0), 1) // troca a rede inicial para a atualizada, restringindo os valores
+				phi[i][j] += math.Min(math.Max((1/T)*G[i][j], 0), 1) // troca a rede inicial para a atualizada, restringindo os valores
 				if phi[i][j] > 0.5 { // atualiza a densidade populacional
 					dat[1]++
 				} else {
