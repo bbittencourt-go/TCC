@@ -2,8 +2,6 @@ TCC - Estudando autômatos celulares com a linguagem de programação Go
 
 TCC - Studying cellular automata using the Go programming language
 
-Please read this in its entirety to avoid confusion.
-
 This repository includes:
 - Code for simulations of cellular automata (Game of Life, SmoothLife, Lenia) in Go language
 - Results: videos generated after running said simulations
