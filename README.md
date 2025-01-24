@@ -10,6 +10,7 @@ This repository includes:
 Details:
 - No external libraries used (all libraries used are built-in)
 - Manual convolution (where applicable, written as a function)
+- Functions ic and op to create files regarding the states of each cell and the population density for every generation
 
 Instructions:
 - You can run these simulations if Go is installed on your computer. If not, install Go at https://go.dev/.
