@@ -6,7 +6,7 @@ This repository includes:
 - Code for simulations of cellular automata (Game of Life, SmoothLife, Lenia) in Go language;
 - Results: videos generated after running said simulations;
 - Plot files (in "plt" folder) to generate .png files (of the whole grid for every generation) and .pdf files (population density graphs);
-- TCC (paper, .pdf file. Download to read!).
+- TCC (paper, .pdf file. Download to read! PT-BR only).
 
 Details:
 - No external libraries used (all libraries used are built-in);
