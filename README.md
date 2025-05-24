@@ -3,9 +3,12 @@
 ### TCC - Studying cellular automata using the Go programming language
 
 #### ACKNOWLEDGEMENTS   -------------------------------------------
-- This section includes any sources read or viewed in making the three cellular automata codes (GoL, SmoothLife, and Lenia), in no particular order or division.
-- hh
-[Click Me to Go to GitHub](http://github.com)
+This section includes any sources read or viewed in making the three cellular automata codes (GoL, SmoothLife, and Lenia), including articles, blogs, websites, and repositories, in no particular order or division.
+- [Bert Wang-chak Chan (Chakazul)'s Lenia portal](https://chakazul.github.io/lenia.html)
+- [Bert Wang-chak Chan's Lenia coding tutorial](https://colab.research.google.com/github/OpenLenia/Lenia-Tutorial/blob/main/Tutorial_From_Conway_to_Lenia.ipynb)
+- [Bert Wang-chak Chan (Chakazul)'s Lenia code repository](https://github.com/Chakazul/Lenia)
+- [Bert Wang-chak Chan (Chakazul)'s online Lenia simulator](https://chakazul.github.io/Lenia/JavaScript/Lenia.html)
+- [Bert Wang-chak Chan (Chakazul)'s online Primordia simulator](https://chakazul.github.io/Primordia/Primordia.html)
 
 
 This repository includes:
