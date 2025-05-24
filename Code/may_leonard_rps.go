@@ -1,3 +1,14 @@
+/* MODELO RPS DE MAY-LEONARD
+criado em       : 2022
+ult. atualização: 2025/05/24
+autor           : Beatriz Bittencourt <beatrizdecbittencourt@gmail.com>
+notas           : Executa o modelo RPS de May-Leonard (mobilidade, reprodução, predação) em arquivos .dat. Código é antigo e não possuía header, então não há a data específica de criação.
+compilação      : -
+execução        : go run may_leonard_rps.go
+*/
+
+
+
 package main
 import (
 	"fmt"
