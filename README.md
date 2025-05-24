@@ -9,9 +9,9 @@ This repository includes:
 - TCC (paper, .pdf file. Download to read! PT-BR only).
 
 Details:
-- No external libraries used (all libraries used are built-in, no need for downloads);
-- Manual convolution (where applicable, written as a function);
+- No external libraries are used in any of the three simulations, meaning there is no need for any downloads.
 - Functions ic (initial condition, "generation zero") and op (to create files regarding the states of each cell and the population density for every generation).
+- In Lenia's case, a 2D manual convolution method is written as a function, based on well-known convolution methods, as it is a required step to reach Lenia according to Bert Wang-chak Chan's paper.
 
 Instructions:
 - You can run these simulations if Go is installed on your computer. If not, install Go at https://go.dev/;
