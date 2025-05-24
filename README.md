@@ -3,7 +3,7 @@ TCC - Estudando autômatos celulares com a linguagem de programação Go
 TCC - Studying cellular automata using the Go programming language
 
 This repository includes:
-- Code for simulations of cellular automata (Game of Life, SmoothLife and Lenia) in Go language;
+- Code for simulations of cellular automata (Game of Life, SmoothLife and Lenia) in Go language. The overall structure of the code for the three cellular automata was heavily borrowed from my first code project, which was Go code for a specific RPS (rock-paper-scissors) model (http://www.eaic.uem.br/eaic2023/anais/artigos/6438.pdf). In Lenia's case, the code was also inspired by Bert Wang-chak Chan's code (https://github.com/Chakazul/Lenia) and the apparent mechanisms of his publicly available Lenia simulations (https://chakazul.github.io/Lenia/JavaScript/Lenia.html);
 - Results: videos generated after running said simulations (download to watch!);
 - Plot files (in "plt" folder) to generate .png files (of the whole grid for every generation) and .pdf files (population density graphs);
 - TCC (paper, .pdf file. Download to read! PT-BR only).
