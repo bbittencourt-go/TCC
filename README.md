@@ -2,7 +2,7 @@
 
 ## TCC - Studying cellular automata using the Go programming language
 
-### ACKNOWLEDGEMENTS   -------------------------------------------
+### ACKNOWLEDGEMENTS
 First and foremost, special thanks to Professor Dr. Breno Ferraz de Oliveira for his overall guidance during the development of this project, including valuable insights, suggestions, corrections, and small code fixes.
 
 Special thanks to Luiz Felipe Locatelli Giroldo for a myriad of reasons.
