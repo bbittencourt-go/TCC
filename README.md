@@ -3,11 +3,11 @@
 ## TCC - Studying cellular automata using the Go programming language
 
 ### ACKNOWLEDGEMENTS   -------------------------------------------
-First and foremost, special thanks to Professor Dr. Breno Ferraz de Oliveira for overall guidance during the making of this project, including insights, suggestions, corrections, and small code fixes.
+First and foremost, special thanks to Professor Dr. Breno Ferraz de Oliveira for his overall guidance during the development of this project, including valuable insights, suggestions, corrections, and small code fixes.
 
 Special thanks to Luiz Felipe Locatelli Giroldo for a myriad of reasons.
 
-This section acknowledges the various sources, like articles, blogs, websites, repositories, and previous works, that informed the development of the three cellular automata simulations (Game of Life, SmoothLife, and Lenia). These materials supported the project by contributing to the research, deepening understanding, or offering inspiration and insight. We thank the creators and contributors of these resources.
+This section acknowledges the various sources, like articles, blogs, websites, repositories, and previous works, that informed the development of the three cellular automata simulations (Game of Life, SmoothLife, and Lenia). These materials supported the project by contributing to the research, deepening understanding, or offering inspiration and insight. We sincerely thank the creators and contributors of these resources.
 
 - My and Professor Oliveira's work on C and Go codes for a May-Leonard RPS (rock-paper-scissors) model [(work is "Relatório_Final_Go_C.pdf", download to read)](Relatório_Final_Go_C.pdf) [(Go code available under /Code)](Code/may_leonard_rps.go) 
 - [Bert Wang-chak Chan (Chakazul)'s Lenia portal](https://chakazul.github.io/lenia.html)
