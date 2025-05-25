@@ -13,11 +13,12 @@ This section acknowledges the various sources, like articles, blogs, websites, r
 - [Bert Wang-chak Chan (Chakazul)'s Lenia portal](https://chakazul.github.io/lenia.html)
 - [Bert Wang-chak Chan's Lenia coding tutorial](https://colab.research.google.com/github/OpenLenia/Lenia-Tutorial/blob/main/Tutorial_From_Conway_to_Lenia.ipynb)
 - [Bert Wang-chak Chan (Chakazul)'s Lenia code repository](https://github.com/Chakazul/Lenia)
-- [Bert Wang-chak Chan (Chakazul)'s online Lenia simulator](https://chakazul.github.io/Lenia/JavaScript/Lenia.html)
+- [Bert Wang-chak Chan (Chakazul)'s online Lenia simulator, with SmoothLife and GoL variations](https://chakazul.github.io/Lenia/JavaScript/Lenia.html)
 - [Bert Wang-chak Chan (Chakazul)'s online Primordia simulator](https://chakazul.github.io/Primordia/Primordia.html)
 - [ionreq (Stephan Rafler)'s SmoothLife application](https://sourceforge.net/projects/smoothlife/)
 - [ionreq (Stephan Rafler)'s YouTube channel](https://www.youtube.com/channel/UC_xsxCHaz_h-GGtOaFRGjvg)
 - [Rudyon's SmoothLife raylib-go code](https://github.com/rudyon/smoothlife-go/tree/9fa85b9a457a2d817529fdfa9b8e062352d516fd)
+- [mikolalysenko (from 0fps.net)'s text on SmoothLife](https://0fps.net/tag/smoothlife/)
 
 
 This repository includes:
