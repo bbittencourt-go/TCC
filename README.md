@@ -3,6 +3,7 @@
 ## TCC - Studying cellular automata using the Go programming language
 
 _this README is still work in progress_
+_this README includes acknowledgements, details on the repo, details on each simulation and instructions._
 
 ### ACKNOWLEDGEMENTS
 First and foremost, special thanks to Professor Dr. Breno Ferraz de Oliveira for his overall guidance during the development of this project, including valuable insights, suggestions, corrections, and small code fixes.
@@ -22,19 +23,29 @@ This section acknowledges the various sources, like articles, blogs, websites, r
 - [Rudyon's SmoothLife raylib-go code](https://github.com/rudyon/smoothlife-go/tree/9fa85b9a457a2d817529fdfa9b8e062352d516fd)
 - [mikolalysenko (from 0fps.net)'s text on SmoothLife](https://0fps.net/tag/smoothlife/)
 
-
-This repository includes:
-- Code for simulations of cellular automata (Game of Life, SmoothLife and Lenia) in Go language. The overall structure of the code for the three cellular automata was heavily borrowed from my first code project, which was Go code for a specific RPS (rock-paper-scissors) model (http://www.eaic.uem.br/eaic2023/anais/artigos/6438.pdf). In Lenia's case, the code was also inspired by Bert Wang-chak Chan's code (https://github.com/Chakazul/Lenia) and the apparent mechanisms of his publicly available Lenia simulations (https://chakazul.github.io/Lenia/JavaScript/Lenia.html);
-- Results: videos generated after running said simulations (download to watch!);
-- Plot files (in "plt" folder) to generate .png files (of the whole grid for every generation) and .pdf files (population density graphs);
-- TCC (paper, .pdf file. Download to read! PT-BR only).
+### THE REPOSITORY
+This repository's primary purpose was to house the videos of my simulations and make it more accessible for the reader to visualize the mechanisms of Game of Life, SmoothLife and Lenia in every generation. Now it also houses the code files, the plot files and these instructions for whoever is interested. The repository includes:
+- Updated code files for the three cellular automata simulations (Game of Life, SmoothLife and Lenia) in Go language.
+- Results in video (.mp4) using specific initial conditions (download to watch!);
+- Plot files (in "plt" folder) to generate .png files of the whole grid for every generation and .pdf files of population density curves;
+- TCC (.pdf file. PT-BR only).
 
 Details:
+- The overall structure of the code for the three cellular automata was heavily borrowed from my first code project, also assisted by Professor Oliveira, which was Go code for the May-Leonard RPS (rock-paper-scissors) model (http://www.eaic.uem.br/eaic2023/anais/artigos/6438.pdf).
 - No external libraries are used in any of the three simulations, meaning there is no need for any downloads.
 - Functions ic (initial condition, "generation zero") and op (to create files regarding the states of each cell and the population density for every generation).
 - In Lenia's case, a 2D manual convolution method is written as a function, based on well-known convolution methods, as it is a required step to reach Lenia according to Bert Wang-chak Chan's paper.
 
-Instructions:
+### DETAILS
+#### GAME OF LIFE
+For Conway's Game of Life, most of the structure was written somewhat as an adaptation of my original RPS code, altering the initial condition, the neighborhood calculations and the overall behavior for every cell.
+
+#### SMOOTHLIFE
+
+#### LENIA
+In Lenia's case, the code was also inspired by Bert Wang-chak Chan's code (https://github.com/Chakazul/Lenia) and the apparent mechanisms of his publicly available Lenia simulations (https://chakazul.github.io/Lenia/JavaScript/Lenia.html);
+
+### INSTRUCTIONS
 - You can run these simulations if Go is installed on your computer. If not, install Go at https://go.dev/;
 - Download the simulations (.go files). You may need to move the files after download to go/src on your computer (in my experience, it was unnecessary). Otherwise, it's recommended to create a separate folder and move the .go files to this destination so that later data files are neatly stored, separate from unrelated files;
 - Open the terminal (Windows cmd, Cygwin, etc.), move to the directory where the .go files are stored, and type in "go run simulation-name.go" (adjust "simulation-name" accordingly);
