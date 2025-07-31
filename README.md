@@ -30,20 +30,25 @@ This repository's primary purpose was to house the videos of my simulations and 
 - Plot files (in "plt" folder) to generate .png files of the whole grid for every generation and .pdf files of population density curves;
 - TCC (.pdf file. PT-BR only).
 
-Details:
+### DETAILS
+
+#### GENERAL
 - The overall structure of the code for the three cellular automata was heavily borrowed from my first code project, also assisted by Professor Oliveira, which was Go code for the May-Leonard RPS (rock-paper-scissors) model (http://www.eaic.uem.br/eaic2023/anais/artigos/6438.pdf).
 - No external libraries are used in any of the three simulations, meaning there is no need for any downloads.
 - Functions ic (initial condition, "generation zero") and op (to create files regarding the states of each cell and the population density for every generation).
-- In Lenia's case, a 2D manual convolution method is written as a function, based on well-known convolution methods, as it is a required step to reach Lenia according to Bert Wang-chak Chan's paper.
 
-### DETAILS
 #### GAME OF LIFE
 For Conway's Game of Life, most of the structure was written somewhat as an adaptation of my original RPS code, altering the initial condition, the neighborhood calculations and the overall behavior for every cell.
 
 #### SMOOTHLIFE
+- The SmoothLife simulation was primarily written as a sort of evolution of the Game of Life simulation, which is also true coding aside.
+- The crucial differences lie in the neighborhood mechanisms (simple Moore neighborhood vs. inner and outer neighborhoods with fillings), the equations used to define a cell's next state (all presented by Rafler in his paper) and the grid update mechanism.
+- Whilst SmoothLife was not the most difficult simulation in this project, it took the longest to write due to many errors, bugs and mistakes, especially when it came to updating the cells' states. 
 
 #### LENIA
-In Lenia's case, the code was also inspired by Bert Wang-chak Chan's code (https://github.com/Chakazul/Lenia) and the apparent mechanisms of his publicly available Lenia simulations (https://chakazul.github.io/Lenia/JavaScript/Lenia.html);
+- The code was mostly inspired by Bert Wang-chak Chan's work such as the pseudocode in his paper, his Lenia Python code, the online Lenia simulation and his two Lenia coding tutorials. We'd like to specially thank Chan for how accessible these resources are!
+- A 2D manual convolution method is written as a function, based on well-known convolution methods, as it is a required step according to Chan's paper.
+- There was an attempt on earlier versions of the simulation to implement Fast Fourier Transform (FFT) as a way to accelerate execution times, as suggested by Professor Oliveira. However, implementing it proved to be a difficult task (both writing by hand and using Go FFT libraries available online such as [argusdusty's](https://github.com/argusdusty/gofft) and [mjibson's](https://pkg.go.dev/github.com/mjibson/go-dsp/fft)). Because of the impressive number of errors, endless debugging and the fact the simulation wasn't even functional by itself at that point, we decided to scrap that and focus on actually having Lenia.
 
 ### INSTRUCTIONS
 - You can run these simulations if Go is installed on your computer. If not, install Go at https://go.dev/;
