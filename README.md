@@ -20,12 +20,12 @@ All literature to first understand the three cellular automata and a few derivat
 - My and Professor Oliveira's work on C and Go codes for a May-Leonard RPS (rock-paper-scissors) model [(work is "Relatório_Final_Go_C.pdf", download to read)](Relatório_Final_Go_C.pdf) [(Go code available under /Code)](Code/may_leonard_rps.go)
 
 #### SMOOTHLIFE
-- [duckythescientist's SmoothLife Python code](https://github.com/duckythescientist/SmoothLife/blob/master/smoothlife.py)
+- [duckythescientist's SmoothLife Python code](https://github.com/duckythescientist/SmoothLife/)
 - [ionreq's SmoothLife application](https://sourceforge.net/projects/smoothlife/)
 - [ionreq's YouTube channel](https://www.youtube.com/channel/UC_xsxCHaz_h-GGtOaFRGjvg)
 - [mikolalysenko (from 0fps.net)'s text on SmoothLife](https://0fps.net/tag/smoothlife/)
-- [Rudyon's SmoothLife raylib-go code](https://github.com/rudyon/smoothlife-go/tree/9fa85b9a457a2d817529fdfa9b8e062352d516fd)
-- [tsoding's SmoothLife C code](https://github.com/tsoding/SmoothLife/blob/master/smoothlife_term.c)
+- [Rudyon's SmoothLife raylib-go code](https://github.com/rudyon/smoothlife-go/)
+- [tsoding's SmoothLife C code](https://github.com/tsoding/SmoothLife/tree/master)
 
 #### LENIA
 - [Bert Wang-chak Chan (Chakazul)'s Lenia portal](https://chakazul.github.io/lenia.html)
