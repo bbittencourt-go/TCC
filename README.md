@@ -2,6 +2,8 @@
 
 ## TCC - Studying cellular automata using the Go programming language
 
+#### *** LENIA CODE HAS BEEN UPDATED (2026/01). PREVIOUS CODE WAS NOT THE FINAL VERSION USED IN THE PROJECT.
+
 _This README is still a work in progress_
 
 _This README includes acknowledgements, details on the repo, details on each simulation, and instructions._
