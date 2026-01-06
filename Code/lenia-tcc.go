@@ -1,8 +1,8 @@
 /* LENIA (BERT WANG-CHAK CHAN)
 criado em       : 2024/12/10
-ult. atualização: 2024/12/27
+ult. atualização: 2026/01/06
 autor           : Beatriz Bittencourt <beatrizdecbittencourt@gmail.com>
-notas           : Executa Lenia (funções e parâmetros para Orbium) em arquivos .dat
+notas           : Executa Lenia (funções e parâmetros ***para Orbium unicaudatus, Orbidae***) em arquivos .dat
 compilação      : -
 execução        : go run lenia-tcc.go
 */
@@ -18,14 +18,16 @@ import (
 	"time"
 )
 
-// constantes como dimensões x e y da rede (Nx e Ny), número de gerações (NG), parâmetros para geração da condição inicial e parâmetros do Lenia
+/* constantes: dimensões x e y da rede (Nx e Ny), número de gerações (NG), parâmetros para geração da condição inicial e parâmetros do Lenia
+
+ n_q = número de quadrados da condição inicial | max_q = lado dos quadrados | R = raio de influência do kernel | alpha, mu, sigma = parâmetros | T = passos temporais por geração */
 const (
-	Nx, Ny, NG, n_q, max_q, R, alpha, mu, sigma, T = 150, 150, 200, 10, 18, 13.0 4, 0.15, 0.017, 10.0
+	Nx, Ny, NG, n_q, max_q, R, alpha, mu, sigma, T = 200, 200, 200, 15, 18, 18.0, 4, 0.14, 0.015, 10.0
 )
 
-// variáveis como x e y da célula, número do arquivo .dat, número da célula e contagens de células, gerações e arquivos
+// variáveis: x e y da célula, x e y dos quadrados, número do arquivo .dat, tempo e contador geral de células, gerações e arquivos
 var (
-	i, j, x_q, y_q, num, t, n int
+	i, j, x_q, y_q, n_arq, t, n int
 	phi [Nx][Ny]float64 // estado da célula (2D por exigência do Lenia, e float64 para assumir estados decimais)
 	dat [2]int
 )
@@ -37,15 +39,15 @@ func ic() {
 		y_q = rand.Intn(Ny - max_q)
 		for i = y_q; i < y_q+max_q; i++ { // na área dentro do perímetro...
 			for j = x_q; j < x_q+max_q; j++ {
-				phi[i][j] = rand.Float64() // ...células assumem estados aleatórios entre 0 e 1
+				phi[i][j] = math.Min(rand.Float64(), rand.Float64()) // ...células assumem estados aleatórios entre 0 e 1, favorecendo estados menores
 			}
 		}
 	}
 }
 
 // função op, imprime a rede ao final de cada geração
-func op(num int, phi [Nx][Ny]float64) {
-	f := fmt.Sprintf("lenia-tcc-%v.dat", num) // arquivo lenia-(x).dat (a depender do número da geração)
+func op(n_arq int, phi [Nx][Ny]float64) {
+	f := fmt.Sprintf("lenia-%v.dat", n_arq) // arquivo lenia-(x).dat
 	file, _ := os.Create(f) // cria o arquivo
 	for i = 0; i < Nx; i++ { // para toda a rede
 		for j = 0; j < Ny; j++ {
@@ -82,7 +84,7 @@ func convolucao(entrada1 [Nx][Ny]float64, entrada2 [][]float64, Nx, Ny int) [][]
 	return saida //função convolução retorna o resultado
 }
 
-// equações do Lenia abaixo; todas são encontradas no artigo original (Bert Wang-Chak Chan, 2019)
+// equações do Lenia abaixo; todas são encontradas no artigo original (Bert Wang-Chak Chan, 2019) e devem ser alteradas a depender do "espécime" de interesse (Orbidae)
 
 // função Kernel, cria a vizinhança para toda célula
 func Kernel(Nx, Ny int, R float64) [][]float64 {
@@ -97,7 +99,7 @@ func Kernel(Nx, Ny int, R float64) [][]float64 {
 			dy := float64(j - Ny/2)
 			r_polar := math.Sqrt(dx*dx + dy*dy) / R // fórmula do raio polar
 			if r_polar < 1 { // se o raio polar for menor que o raio da vizinhança...
-				kernel[i][j] = math.Exp(alpha * (1 - (1 / (4*r_polar*(1-r_polar))))) // ...cria a área de influência (nesse caso, apenas kernel core)
+				kernel[i][j] = math.Exp(alpha * (1 - (1.0/(4.0*r_polar*(1-r_polar))))) // ...cria a área de influência (nesse caso, apenas kernel core)
 			}
 		}
 	}
@@ -124,7 +126,7 @@ func g(U [][]float64, m, s float64) [][]float64 { // função G(u; mu, sigma) (g
 	for i := range G {
 		G[i] = make([]float64, size)
 		for j := range G[i] {
-			G[i][j] = 2*(math.Exp(-(math.Pow((U[i][j]-mu), 2)) / (2 * sigma * sigma))) - 1 // fórmula da função G(u; mu, sigma) (Chan)
+			G[i][j] = 2*(math.Exp(-(math.Pow((U[i][j]-mu), 2)) / (2 * sigma * sigma))) - 1 // fórmula da função G(u; mu, sigma) (Orbidae)
 		}
 	}
 	return G // função g retorna a matriz mapeamento de crescimento G
@@ -162,7 +164,8 @@ func main() {
 
 		for i := 0; i < Nx; i++ { // para toda a rede
 			for j := 0; j < Ny; j++ {
-				phi[i][j] += math.Min(math.Max((1/T)*G[i][j], 0), 1) // troca a rede inicial para a atualizada, restringindo os valores
+				phi[i][j] = math.Min(math.Max(phi[i][j]+(1/T)*G[i][j], 0), 1)
+				// troca a rede inicial para a atualizada, restringindo os valores
 				if phi[i][j] > 0.5 { // atualiza a densidade populacional
 					dat[1]++
 				} else {
