@@ -1,7 +1,6 @@
 # TCC - Estudando autômatos celulares com a linguagem de programação Go
 
 ## TCC - Studying cellular automata using the Go programming language
-_If you landed here, we assume you've come from the TCC. In any case, it is available as a file in this repository._
 
 _This README is still a work in progress_
 
@@ -35,7 +34,7 @@ All literature to first understand the three cellular automata and a few derivat
 - [Bert Wang-chak Chan (Chakazul)'s online Primordia simulator](https://chakazul.github.io/Primordia/Primordia.html)
 
 ### THE REPOSITORY
-This repository's primary purpose was to house the videos of our simulations and make it more accessible for the reader to visualize the mechanisms of Game of Life, SmoothLife, and Lenia in time. Now it also houses the code files, the plot files, and these instructions for running the simulations. The repository includes:
+This repository's primary purpose was to house the videos of our simulations and make it more accessible for the reader to visualize the mechanisms of Game of Life, SmoothLife, and Lenia in time. Now it also houses the code files, the plot files, and instructions. The repository includes:
 - Updated (early 2025) code files for the three cellular automata simulations (Game of Life, SmoothLife, and Lenia) in Go language.
 - Results in video (.mp4) using specific initial conditions;
 - Plot files (in "plt" folder) to generate .png files of the whole grid for every generation and .pdf files of population density curves;
@@ -46,37 +45,38 @@ This repository's primary purpose was to house the videos of our simulations and
 _This section does not discuss GoL, SL, and Lenia in depth as cellular automata; rather, we discuss the coding processes and general and particular mechanisms._
 
 #### GENERAL
-- The overall structure of the code for the three cellular automata was heavily borrowed from our Go code (available here as well) for the May-Leonard RPS (rock-paper-scissors) model. Because it was also essentially a lattice evolving in time, excluding the very different mechanisms and behaviors, the most primitive "skeleton" for the cellular automata was somewhat already present.
-- No external libraries were used in any of the three simulations, meaning there is no need for any additional downloads.
-- All three, in their cores, operate under the functions ic (initial condition, "generation zero") and op (to create, open, write, and close data files regarding the states of each cell and the population density for every generation). Their basic structures are also quite similar: ic is run, the ic data file is created, neighborhoods are calculated, the automaton's core equations are used to orderly evolve each cell, the grid is updated, an updated data file is created, and the simulation moves on to the next generation. The simulations also use boundary conditions.
+- The overall structure for the three cellular automata was borrowed from our Go code for the May-Leonard RPS (rock-paper-scissors) model. Because it is essentially a lattice evolving in time, the most primitive "skeleton" for the cellular automata was already present.
+- No external libraries were used in any of the three simulations. There is no need for any additional downloads or setup.
+- All three operate under the functions ic (initial condition, "generation zero") and op (to create, open, write, and close data files regarding the states of each cell and the population density for every generation). Their basic structures are also similar: ic is run, the ic data file is created, neighborhoods are calculated, the automaton's core equations are used to orderly evolve each cell, the grid is updated, an updated data file is created, and the simulation moves on to the next generation. The simulations use boundary conditions.
 
 #### GAME OF LIFE
-- For Conway's Game of Life, as mentioned above, most of the structure was written as an adaptation of our original RPS code, altering the initial conditions, neighborhood calculations, and overall cell behaviors.
-- The code is quite simple in nature, given the simplicity of the game. It basically follows the structure described previously and the eight neighbors' equations to determine whether the cell is dead (0) or alive (1). 
+- The simulation for Conway's Game of Life was written as an adaptation of our RPS code, altering initial conditions, neighborhood calculations, and overall cell behaviors.
+- The code basically uses ic and op and the eight neighbors' equations to determine and register whether cells are dead (0) or alive (1) in a generation.
+- Many tested parameters were found in websites dedicated to GoL's patterns.
 
 #### SMOOTHLIFE
-- The SmoothLife simulation was primarily written as an evolution of our previous Game of Life simulation. However, there were a number of issues in this code. All our subsequent SmoothLife iterations were written based on fixing it, as we realized crucial details from Rafler's paper were either missing or misunderstood. For these reasons, whilst SmoothLife was not the most difficult simulation in this project, it took the longest to achieve a fully functional code.
-- The differences when compared to Conway's Game of Life lie in the neighborhood mechanisms (simple Moore neighborhood vs. inner and outer neighborhoods with fillings), the equations used to define a cell's next state, and the grid update mechanism. 
+- The SmoothLife simulation was first an adaptation of our Game of Life simulation, then rewritten following Rafler's paper.
+- The differences to Conway's Game of Life lie in the neighborhood mechanisms (simple Moore neighborhood vs. inner and outer neighborhoods with fillings), the equations used to define a cell's next state, and the grid update mechanism.
+- A few tested parameters were extracted directly from ionreq's SmoothLife application, from a list of parameter values.
 
 #### LENIA
-- For Lenia, rather than repeating the initial process from GoL to SmoothLife (adapt one to obtain the other), we learned from the experience and decided it'd be better to not base its code on any of our previous simulations, save the obligatory ic and op functions.
-- Therefore, the code was mostly inspired by Bert Wang-chak Chan's work, such as his pseudocode, his Python code, his online Lenia JavaScript simulation, and his two Lenia coding tutorials. We'd like to specially thank Chan for making these very accessible resources!
-- There was an attempt on earlier versions of the simulation to implement a Fast Fourier Transform (FFT) algorithm as a way to accelerate execution times, so we made attempts using Go FFT libraries such as [argusdusty's](https://github.com/argusdusty/gofft) and [mjibson's](https://pkg.go.dev/github.com/mjibson/go-dsp/fft). However, as our Lenia code could barely function at this point, none of these attempts were fruitful, so we scrapped the FFT implementation and shifted our priorities to simply obtain Lenia, even if execution was slow.  
+- For Lenia, the code was written using Chan's extensive work as a guide, save the obligatory ic and op functions. We'd like to thank Chan for making many helpful Lenia resources easily accessible, such as pseudocode, Python code, online Javascript simulation and coding tutorials.
+- There was an attempt on earlier versions of the simulation to implement a Fast Fourier Transform (FFT) algorithm, using Go FFT libraries such as [argusdusty's](https://github.com/argusdusty/gofft) and [mjibson's](https://pkg.go.dev/github.com/mjibson/go-dsp/fft). However, FFT implementation was scrapped.  
 - A 2D manual convolution method is written as a function, based on well-known convolution methods, as it is a required step according to Chan's paper.
-- ##### Testing of this simulation was rather limited due to the slow execution times and a lack of processing power at the time, so the lattices were small and short-lived. The results obtained thus far indicate that Lenia species can form in this simulation, but tend to disappear in a few generations. Future executions with better processing power might answer whether the present simulation is entirely correct in its structure or not; if fixes are necessary, the code will be swiftly updated.
+- ##### Testing of this simulation was rather limited. The results obtained thus far indicate that Lenia species can form in this simulation, but tend to disappear in a few generations. If fixes are necessary, the code will be swiftly updated.
 
 ### INSTRUCTIONS
-- You can run these simulations if Go is installed on your computer. If not, install Go at https://go.dev/;
-- Download the simulations (.go files). You may need to move the files after download to go/src on your computer (in my experience, it was unnecessary). Otherwise, it's recommended to create a separate folder and move the .go files to this destination so that later data files are neatly stored;
-- Open the terminal (Windows cmd, Cygwin, etc.), move to the directory where the .go files are stored, and type in "go run simulation-name.go" (adjust "simulation-name" accordingly);
-- Each simulation will produce a finite number of .dat files (specified in the code as the constant NG, number of generations). These .dat files contain the entire grid, each number imprinted representing the current state of the cell at the specified position;
-- To generate grid images from the .dat files, you will need Gnuplot. Ensure it is on your computer or download it at http://www.gnuplot.info/download.html;
-- Download and edit the grid.plt file to your specifications (number of generations, grid size, .dat files names, output files names, etc.). Ensure it is in the same directory as the .dat files and run it by simply clicking;
-      - The grid.plt file contains a rainbow color palette to plot SmoothLife and Lenia simulations (as these use decimal numbers). To plot Conway's Game of Life, you may want to adjust it to only two colors.
-- The same printing process can be done using the pop-density.plt file and the population density .dat file generated by the simulation. In this case, one .pdf graph can display many data files (curves) at once, so adjust the file according to your intentions;
+- You can run these simulations if Go is installed on your computer.
+- Download the simulations (.go files). You may need to move the files after download to go/src on your computer. Otherwise, it's recommended to create a separate folder and move the .go files so that later data files are neatly stored;
+- Open the terminal (Windows cmd, Cygwin, etc.), move to the directory, and type in "go run simulation-name.go" (adjust "simulation-name" accordingly);
+- Each simulation will produce a number of .dat files (specified as NG, number of generations). These .dat files contain the entire grid, each number imprinted representing the current state of the cell at the specified position;
+- To generate grid images from the .dat files, Gnuplot is necessary.
+- Download and edit the grid.plt file (number of generations, grid size, .dat files names, output files names, etc.). Ensure it is in the same directory as the .dat files and run it;
+      - The grid.plt file contains a rainbow color palette to plot SmoothLife and Lenia simulations. To plot Conway's Game of Life, you may want to adjust it to only two colors.
+- The same printing process can be done using the pop-density.plt file and the population density .dat file generated by the simulation. In this case, one .pdf graph can display many data files (curves) at once;
 - To make videos from the .png images, open the terminal after generating all images and ensure you are in the same directory. Then, copy and paste the following command, replacing "image-%d.png" and "video.mp4" as necessary:
 
 ffmpeg -r 7 -i image-%d.png -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -y video.mp4
 
-- Parameters may be edited in the .go files. They are generally presented as constants, variables, equations or functions, making them easily alterable.
-- There are two initial conditions to be used in these simulations. One is a pseudorandom state distribution through the entire grid (the standard beginning for GoL), and the other is the random spawning of squares containing pseudorandom decimal numbers. The latter initial condition is a better option for SmoothLife and Lenia, as it does not encourage the growth of something called an "expansive mass" (a sort of amoeba that expands until it consumes the entire grid, effectively hindering interactions and forming of any interesting patterns or behaviors). Therefore, the SmoothLife and Lenia simulations cater to this initial condition.
+- Parameters may be edited in the .go files. They are generally presented as constants, variables, equations or functions.
+- There are two initial conditions to be used in these simulations. One is a pseudorandom state distribution through the entire grid (the standard beginning for GoL), and the other is the random spawning of squares containing pseudorandom decimal numbers. The latter initial condition is a better option for SmoothLife and Lenia.
