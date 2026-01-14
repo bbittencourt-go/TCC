@@ -30,3 +30,11 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Gnuplot and Simulation Outputs
+*.dat
+*.png
+*.plt~
+*.pdf                # Ignore all PDFs
+!TCC.pdf       # But KEEP this one
+!May_Leonard_RPS.pdf
