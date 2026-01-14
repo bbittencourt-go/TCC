@@ -17,11 +17,11 @@ go run simulation-name.go
 ```
 Each simulation generates `.dat` files representing the grid state for each generation (`NG`).
 
-**Generate Visuals:** Make changes to the provided `.plt` scripts (if necessary) and run in `Gnuplot` to convert `.dat` outputs into visuals:
+**Generate visuals:** Make changes to the provided `.plt` scripts (if necessary) and run in `Gnuplot` to convert `.dat` outputs into visuals:
 - Use `grid.plt` to generate `.png` images of the grid.
 - Use `pop-density.plt` to generate `.pdf` population density curves.
 
-**Create Video:** 
+**Create video:** 
 
 ```bash
 ffmpeg -r 7 -i image-%d.png -c:v libx264 -pix_fmt yuv420p video.mp4
@@ -38,10 +38,10 @@ ffmpeg -r 7 -i image-%d.png -c:v libx264 -pix_fmt yuv420p video.mp4
 (**Note on Lenia:** While species form successfully, they may currently be unstable over long generations; updates are applied as optimizations continue.)
 
 ### Repository Contents
-**Code:** Updated (2025/2026) `.go` source files.
-**Videos:** `.mp4` results of simulations using specific initial conditions.
-**Plots:** `.plt` scripts for `Gnuplot` visualization.
-**Documents:** `.pdf` files (PT-BR).
+- **Code:** Updated (2025/2026) `.go` source files.
+- **Videos:** `.mp4` results of simulations using specific initial conditions.
+- **Plots:** `.plt` scripts for `Gnuplot` visualization.
+- **Documents:** `.pdf` files (PT-BR).
 
 ### References & Acknowledgements
 #### Acknowledgements
