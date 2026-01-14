@@ -1,4 +1,4 @@
-## TCC - Estudando Autômatos Celulares com a Linguagem de Programação Go
+## TCC: Estudando Autômatos Celulares com a Linguagem de Programação Go
 ## TCC: Studying Cellular Automata Using the Go Programming Language
 
 _Lenia code has been updated. (2026/01)_
