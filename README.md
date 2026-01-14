@@ -1,6 +1,10 @@
 ## TCC: Estudando Autômatos Celulares com a Linguagem de Programação Go
 ## TCC: Studying Cellular Automata Using the Go Programming Language
 
+<p align="center">
+  <img src="Videos/orbium.gif" width="150">
+</p>
+
 _Lenia code has been updated. (2026/01)_
 
 #### Studying Game of Life, SmoothLife, and Lenia
