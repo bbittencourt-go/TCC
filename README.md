@@ -2,8 +2,10 @@
 ## TCC: Studying Cellular Automata Using the Go Programming Language
 
 <p align="center">
-  <img src="Videos/orbium.gif" width="150">
+  <img src="2026/2026-01-orbium.gif" width="350">
 </p>
+
+_A stable Orbium unicaudatus was found! (2026/01/26)_
 
 _Lenia code has been updated. (2026/01)_
 
